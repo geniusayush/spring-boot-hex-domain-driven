@@ -1,0 +1,5 @@
+FROM localstack/localstack
+
+RUN apk update && apk add jq
+
+COPY run.sh /docker-entrypoint-initaws.d/
