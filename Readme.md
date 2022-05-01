@@ -1,4 +1,4 @@
-benito@kadmos1.recruitee.com & sasha@kadmos.io
+
 
 This is my best case attempt at the test assingment 
 #to run 
