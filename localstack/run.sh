@@ -95,6 +95,7 @@ awslocal apigateway put-integration \
     --http-method GET \
     --type HTTP \
     --integration-http-method GET \
+    --timeout-in-millis 5000 \
     --uri https://localhst:8081/balance \
 
 
@@ -107,6 +108,7 @@ awslocal apigateway put-integration \
     --http-method GET \
     --type HTTP \
     --integration-http-method GET \
+    --timeout-in-millis 5000 \
     --uri https://localhst:8082/balance \
 
 
@@ -120,6 +122,7 @@ awslocal apigateway put-integration \
     --http-method POST \
     --type HTTP \
     --integration-http-method POST \
+    --timeout-in-millis 5000 \
     --uri https://localhst:8081/balance \
 
 
@@ -132,27 +135,28 @@ awslocal apigateway put-integration \
     --http-method POST \
     --type HTTP \
     --integration-http-method POST \
+    --timeout-in-millis 5000 \
     --uri https://localhst:8082/balance \
 
 
 [ $? == 0 ] || fail 5 "Failed: AWS / apigateway / put-integration"
 
 
-aws apigateway put-integration-response  --rest-api-id ${API_ID}  \
+awslocal apigateway put-integration-response  --rest-api-id ${API_ID}  \
         --resource-id ${RESOURCE_ID_2} --http-method GET \
        --status-code 200 --selection-pattern ""  \
         --region ${REGION}
-aws apigateway put-integration-response --rest-api-id ${API_ID}\
+awslocal apigateway put-integration-response --rest-api-id ${API_ID}\
         --resource-id ${RESOURCE_ID_2}  --http-method GET \
        --status-code 200 --selection-pattern ""  \
         --region ${REGION}
 
 
-aws apigateway put-integration-response  --rest-api-id ${API_ID}  \
+awslocal apigateway put-integration-response  --rest-api-id ${API_ID}  \
         --resource-id ${RESOURCE_ID_2} --http-method POST \
        --status-code 200 --selection-pattern ""  \
         --region ${REGION}
-aws apigateway put-integration-response --rest-api-id ${API_ID}\
+awslocal apigateway put-integration-response --rest-api-id ${API_ID}\
         --resource-id ${RESOURCE_ID_2}  --http-method POST \
        --status-code 200 --selection-pattern ""  \
         --region ${REGION}
