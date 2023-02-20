@@ -1,4 +1,4 @@
-package com.kadmos.exception;
+package com.springdemo.adapters.exception;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;

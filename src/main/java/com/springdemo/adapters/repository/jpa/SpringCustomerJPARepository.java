@@ -1,6 +1,5 @@
-package com.kadmos.repository;
+package com.springdemo.adapters.repository.jpa;
 
-import com.kadmos.pojo.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Lock;
 import org.springframework.stereotype.Repository;
@@ -8,10 +7,10 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.LockModeType;
 
 @Repository
-public interface CustomerRepository extends JpaRepository<Customer, String> {
+public interface SpringCustomerJPARepository extends JpaRepository<CustomerEntity, String> {
 
 
     @Lock(value = LockModeType.PESSIMISTIC_WRITE)
     @Override
-    Customer getById(String id);
+    CustomerEntity getById(String id);
 }

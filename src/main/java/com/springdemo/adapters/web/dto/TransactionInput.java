@@ -1,4 +1,4 @@
-package com.kadmos.web.dto;
+package com.springdemo.adapters.web.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,11 +10,16 @@ import javax.validation.constraints.Positive;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-public class CustomerDto {
+@AllArgsConstructor
+public class TransactionInput {
+
     @NotNull
     @Positive
     private Double amount;
+    @NotNull
+    private Long from;
+    @NotNull
+    private Long to;
 
 }

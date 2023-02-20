@@ -1,34 +1,31 @@
-package com.kadmos.service;
+package com.springdemo.application.service;
 
-import com.kadmos.exception.CustomerException;
-import com.kadmos.pojo.Customer;
-import com.kadmos.repository.CustomerRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
+import com.springdemo.adapters.repository.jpa.CustomerJPARepository;
+import com.springdemo.application.port.CustomerRepository;
+import com.springdemo.application.exception.CustomerException;
+import com.springdemo.application.port.CustomerService;
+import com.springdemo.domain.Customer;
+
 
 import java.util.Optional;
 
-@Service
-public class CustomerService {
+public class CustomerServiceImpl implements CustomerService {
 
     private final CustomerRepository customerRepository;
 
-    @Value("${customer.id}")
-    private String customerId;
-
-    @Autowired
-    public CustomerService(CustomerRepository customerRepository) {
-        this.customerRepository = customerRepository;
+    public CustomerServiceImpl(CustomerJPARepository customerJPARepositoryPort) {
+        this.customerRepository = customerJPARepositoryPort;
     }
 
-    public Customer getCustomer() throws CustomerException {
+    @Override
+    public Customer getCustomer(String customerId) throws CustomerException {
         return customerRepository.findById(customerId)
             .orElseThrow(() -> new CustomerException("customer could not be found"));
 
     }
 
-    public Customer upsert(Double amount) throws CustomerException {
+    @Override
+    public Customer upsert(Double amount, String customerId) throws CustomerException {
         Optional<Customer> optionalCustomer = customerRepository.findById(customerId);
         Customer c;
         if (optionalCustomer.isPresent()) {

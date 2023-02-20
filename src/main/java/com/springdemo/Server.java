@@ -1,4 +1,4 @@
-package com.kadmos;
+package com.springdemo;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,7 +26,7 @@ public class Server {
     }
 
     @Bean
-    public Docket ProductIntegrationApi() {
+    public Docket CustomerIntegrationApi() {
 
         Set<String> produceTypes = new HashSet<>();
         produceTypes.add("application/json");
@@ -41,7 +41,7 @@ public class Server {
                 .produces(produceTypes)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.kadmos"))
+                .apis(RequestHandlerSelectors.basePackage("com.springdemo"))
                 .paths(PathSelectors.any())
                 .build();
     }
