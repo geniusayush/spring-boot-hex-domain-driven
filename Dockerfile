@@ -1,4 +1,6 @@
-FROM openjdk:8-jdk-alpine
-MAINTAINER baeldung.com
-COPY target/backend-coding-challenge-1.0.jarbackend-coding-challenge-1.0.jar
-ENTRYPOINT ["java","-jar","/backend-coding-challenge-1.0.jar"]
+FROM adoptopenjdk/openjdk11:jdk-11.0.2.9-slim
+WORKDIR /opt
+ENV PORT 8080
+EXPOSE 8080
+COPY target/*.jar /opt/app.jar
+ENTRYPOINT exec java $JAVA_OPTS -jar app.jar

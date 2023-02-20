@@ -163,8 +163,7 @@ awslocal apigateway put-integration-response --rest-api-id ${API_ID}\
 
 awslocal apigateway create-deployment \
     --region ${REGION} \
-    --rest-api-id ${API_ID} \
-    --stage-name ${STAGE} \
+    --rest-api-id ${API_ID} 
 
 [ $? == 0 ] || fail 6 "Failed: AWS / apigateway / create-deployment"
 
